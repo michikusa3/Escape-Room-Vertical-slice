@@ -191,7 +191,7 @@ public static class UbhUtil
         }
         float yDistance = toTrans.position.y - fromTrans.position.y;
         float zDistance = toTrans.position.z - fromTrans.position.z;
-        float angle = (Mathf.Atan2(zDistance, yDistance) * Mathf.Rad2Deg) - 90f;
+        float angle = (Mathf.Atan2(yDistance, zDistance) * Mathf.Rad2Deg) - 90f;
         angle = GetNormalizedAngle(angle);
 
         return angle;

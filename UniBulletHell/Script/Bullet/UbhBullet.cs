@@ -138,10 +138,14 @@ public class UbhBullet : UbhMonoBehaviour
                 // X and Z axis
                 m_baseAngle = m_parentBaseShot.shotCtrl.transform.eulerAngles.y;
             }
-            else
+            else if(m_axisMove == UbhUtil.AXIS.X_AND_Y)
             {
                 // X and Y axis
                 m_baseAngle = m_parentBaseShot.shotCtrl.transform.eulerAngles.z;
+            }
+            else
+            {   // Y and Z axis
+                m_baseAngle = m_parentBaseShot.shotCtrl.transform.eulerAngles.x;
             }
         }
 
@@ -150,10 +154,15 @@ public class UbhBullet : UbhMonoBehaviour
             // X and Z axis
             m_transformCache.SetEulerAnglesY(m_baseAngle - m_angle);
         }
-        else
+        else if(m_axisMove == UbhUtil.AXIS.X_AND_Y)
         {
             // X and Y axis
             m_transformCache.SetEulerAnglesZ(m_baseAngle + m_angle);
+        }
+        else
+        {
+            // Y and Z axis
+            m_transformCache.SetEulerAnglesX(m_baseAngle + m_angle);
         }
 
         m_selfFrameCnt = 0f;
@@ -207,11 +216,16 @@ public class UbhBullet : UbhMonoBehaviour
                     // X and Z axis
                     myAngle = -myAngles.y;
                 }
-                else
+                else if(m_axisMove == UbhUtil.AXIS.X_AND_Y)
                 {
                     // X and Y axis
                     myAngle = myAngles.z;
                 }
+                else
+                {   // Y and Z axis
+                    myAngle = myAngles.x;
+                }
+
 
                 float toAngle = Mathf.MoveTowardsAngle(myAngle, rotAngle, deltaTime * m_homingAngleSpeed);
 
@@ -220,10 +234,14 @@ public class UbhBullet : UbhMonoBehaviour
                     // X and Z axis
                     newRotation = Quaternion.Euler(myAngles.x, -toAngle, myAngles.z);
                 }
-                else
+                else if(m_axisMove == UbhUtil.AXIS.X_AND_Y)
                 {
                     // X and Y axis
                     newRotation = Quaternion.Euler(myAngles.x, myAngles.y, toAngle);
+                }
+                else
+                {   // Y and Z axis
+                    newRotation = Quaternion.Euler(toAngle, myAngles.y, myAngles.z);
                 }
             }
         }
@@ -240,10 +258,14 @@ public class UbhBullet : UbhMonoBehaviour
                     // X and Z axis
                     newRotation = Quaternion.Euler(myAngles.x, m_baseAngle - waveAngle, myAngles.z);
                 }
-                else
+                else if(m_axisMove == UbhUtil.AXIS.X_AND_Y)
                 {
                     // X and Y axis
                     newRotation = Quaternion.Euler(myAngles.x, myAngles.y, m_baseAngle + waveAngle);
+                }
+                else
+                {   // Y and Z axis
+                    newRotation = Quaternion.Euler(m_baseAngle - waveAngle, myAngles.y ,myAngles.z);
                 }
             }
             m_selfFrameCnt += UbhTimer.instance.deltaFrameCount;
@@ -257,10 +279,14 @@ public class UbhBullet : UbhMonoBehaviour
                 // X and Z axis
                 newRotation = Quaternion.Euler(myAngles.x, myAngles.y - addAngle, myAngles.z);
             }
-            else
+            else if(m_axisMove == UbhUtil.AXIS.X_AND_Y)
             {
                 // X and Y axis
                 newRotation = Quaternion.Euler(myAngles.x, myAngles.y, myAngles.z + addAngle);
+            }
+            else
+            {   // Y and Z axis
+                newRotation = Quaternion.Euler(myAngles.x - addAngle , myAngles.y, myAngles.z);
             }
         }
 
@@ -284,10 +310,14 @@ public class UbhBullet : UbhMonoBehaviour
             // X and Z axis
             newPosition = m_transformCache.position + (m_transformCache.forward * (m_speed * deltaTime));
         }
-        else
+        else if(m_axisMove == UbhUtil.AXIS.X_AND_Y)
         {
             // X and Y axis
             newPosition = m_transformCache.position + (m_transformCache.up * (m_speed * deltaTime));
+        }
+        else
+        {   // Y and Z axis
+            newPosition = m_transformCache.position + ((m_transformCache.forward + m_transformCache.up) * (m_speed * deltaTime));
         }
 
         // set new position and rotation

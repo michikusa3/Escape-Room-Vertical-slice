@@ -153,9 +153,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_centerBullet: {fileID: 124524}
-  m_numOfTentacles: 75
+  m_numOfTentacles: 18
   m_numOfBulletsForOneTentacle: 3
   m_distanceBetweenBullets: 0.25
   m_enableCenterBullet: 1
-  m_axisMove: 0
+  m_axisMove: 2
   m_rotationSpeed: 90

@@ -62,10 +62,10 @@ public sealed class UbhTentacleBullet : MonoBehaviour
                 switch (m_axisMove)
                 {
                     case UbhUtil.AXIS.X_AND_Y:
-                        transBullet.position += (quat * Vector3.up * ((k + 1) * m_distanceBetweenBullets));
+                        transBullet.position += (quat * (Vector3.up) * ((k + 1) * m_distanceBetweenBullets));
                         break;
                     case UbhUtil.AXIS.X_AND_Z:
-                        transBullet.position += (quat * Vector3.forward * ((k + 1) * m_distanceBetweenBullets));
+                        transBullet.position += (quat * (Vector3.forward) * ((k + 1) * m_distanceBetweenBullets));
                         break;
                      case UbhUtil.AXIS.Y_AND_Z:
                         transBullet.position += (quat * (Vector3.forward + Vector3.up ) * ((k + 1) * m_distanceBetweenBullets));
@@ -81,6 +81,7 @@ public sealed class UbhTentacleBullet : MonoBehaviour
 
     /// <summary>
     /// Update Rotate
+    /// ここを調整すればTentacleの形を自在に回すことができる
     /// </summary>
     public void UpdateRotate()
     {
@@ -93,9 +94,11 @@ public sealed class UbhTentacleBullet : MonoBehaviour
             case UbhUtil.AXIS.X_AND_Z:
                 m_rootTransform.AddEulerAnglesY(-m_rotationSpeed * UbhTimer.instance.deltaTime);
                 break;
+
             case UbhUtil.AXIS.Y_AND_Z:
-                m_rootTransform.AddEulerAnglesY(-m_rotationSpeed * UbhTimer.instance.deltaTime);
-                m_rootTransform.AddEulerAnglesZ(m_rotationSpeed * UbhTimer.instance.deltaTime);
+                m_rootTransform.AddEulerAnglesX(m_rotationSpeed * UbhTimer.instance.deltaTime);
+                //m_rootTransform.AddEulerAnglesZ(m_rotationSpeed * UbhTimer.instance.deltaTime);
+                //m_rootTransform.AddEulerAnglesY(-m_rotationSpeed * UbhTimer.instance.deltaTime);
                 break;
             default:
                 break;

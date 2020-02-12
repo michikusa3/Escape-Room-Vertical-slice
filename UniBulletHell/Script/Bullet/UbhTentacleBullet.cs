@@ -49,6 +49,9 @@ public sealed class UbhTentacleBullet : MonoBehaviour
                 case UbhUtil.AXIS.X_AND_Z:
                     quat = Quaternion.Euler(new Vector3(0f, addAngle * i, 0f));
                     break;
+                case UbhUtil.AXIS.Y_AND_Z:
+                    quat = Quaternion.Euler(new Vector3(addAngle * i, 0f, 0f));
+                    break;
                 default:
                     break;
             }
@@ -63,6 +66,9 @@ public sealed class UbhTentacleBullet : MonoBehaviour
                         break;
                     case UbhUtil.AXIS.X_AND_Z:
                         transBullet.position += (quat * Vector3.forward * ((k + 1) * m_distanceBetweenBullets));
+                        break;
+                     case UbhUtil.AXIS.Y_AND_Z:
+                        transBullet.position += (quat * (Vector3.forward + Vector3.up ) * ((k + 1) * m_distanceBetweenBullets));
                         break;
                     default:
                         break;
@@ -87,7 +93,10 @@ public sealed class UbhTentacleBullet : MonoBehaviour
             case UbhUtil.AXIS.X_AND_Z:
                 m_rootTransform.AddEulerAnglesY(-m_rotationSpeed * UbhTimer.instance.deltaTime);
                 break;
-
+            case UbhUtil.AXIS.Y_AND_Z:
+                m_rootTransform.AddEulerAnglesY(-m_rotationSpeed * UbhTimer.instance.deltaTime);
+                m_rootTransform.AddEulerAnglesZ(m_rotationSpeed * UbhTimer.instance.deltaTime);
+                break;
             default:
                 break;
         }

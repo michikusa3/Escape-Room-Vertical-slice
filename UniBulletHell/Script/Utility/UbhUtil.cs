@@ -23,6 +23,7 @@ public static class UbhUtil
     {
         X_AND_Y,
         X_AND_Z,
+        Y_AND_Z,
     }
 
     /// <summary>
@@ -141,6 +142,8 @@ public static class UbhUtil
                 return GetZangleFromTwoPosition(fromTrans, toTrans);
             case AXIS.X_AND_Z:
                 return GetYangleFromTwoPosition(fromTrans, toTrans);
+            case AXIS.Y_AND_Z:
+                return GetXangleFromTwoPosition(fromTrans, toTrans);
             default:
                 return 0f;
         }
@@ -175,6 +178,20 @@ public static class UbhUtil
         float xDistance = toTrans.position.x - fromTrans.position.x;
         float zDistance = toTrans.position.z - fromTrans.position.z;
         float angle = (Mathf.Atan2(zDistance, xDistance) * Mathf.Rad2Deg) - 90f;
+        angle = GetNormalizedAngle(angle);
+
+        return angle;
+    }
+
+    private static float GetXangleFromTwoPosition(Transform fromTrans, Transform toTrans)
+    {
+        if (fromTrans == null || toTrans == null)
+        {
+            return 0f;
+        }
+        float yDistance = toTrans.position.y - fromTrans.position.y;
+        float zDistance = toTrans.position.z - fromTrans.position.z;
+        float angle = (Mathf.Atan2(zDistance, yDistance) * Mathf.Rad2Deg) - 90f;
         angle = GetNormalizedAngle(angle);
 
         return angle;

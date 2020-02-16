@@ -66,9 +66,9 @@ public class UbhNwayShot : UbhBaseShot
             {
                 break;
             }
-
+            //奇数か偶数かを調べて、
             float baseAngle = m_wayNum % 2 == 0 ? m_centerAngle - (m_betweenAngle / 2f) : m_centerAngle;
-
+            //奇数か偶数か精げてWayの角度を決める
             float angle = UbhUtil.GetShiftedAngle(i, baseAngle, m_betweenAngle);
 
             ShotBullet(bullet, m_bulletSpeed, angle);

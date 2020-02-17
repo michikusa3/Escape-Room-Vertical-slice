@@ -10,6 +10,9 @@ public class UbhBullet : UbhMonoBehaviour
     private UbhBaseShot m_parentBaseShot;
     private float m_speed;
     private float m_angle;
+    //Quartanion弾の角度
+    private Quaternion m_quartanionAngle;
+    private float m_WayBulletAngle;
     private float m_accelSpeed;
     private float m_accelTurn;
     private bool m_homing;
@@ -92,13 +95,13 @@ public class UbhBullet : UbhMonoBehaviour
     /// Bullet Shot
     /// </summary>
     public void Shot(UbhBaseShot parentBaseShot,
-                     float speed, float angle, float accelSpeed, float accelTurn,
-                     bool homing, Transform homingTarget, float homingAngleSpeed,
-                     bool sinWave, float sinWaveSpeed, float sinWaveRangeSize, bool sinWaveInverse,
-                     bool pauseAndResume, float pauseTime, float resumeTime,
-                     bool useAutoRelease, float autoReleaseTime,
-                     UbhUtil.AXIS axisMove, bool inheritAngle,
-                     bool useMaxSpeed, float maxSpeed, bool useMinSpeed, float minSpeed)
+                        float speed, float angle, Quaternion quartanionAngle,float accelSpeed, float accelTurn,
+                        bool homing, Transform homingTarget, float homingAngleSpeed,
+                        bool sinWave, float sinWaveSpeed, float sinWaveRangeSize, bool sinWaveInverse,
+                        bool pauseAndResume, float pauseTime, float resumeTime,
+                        bool useAutoRelease, float autoReleaseTime,
+                        UbhUtil.AXIS axisMove, bool inheritAngle,
+                        bool useMaxSpeed, float maxSpeed, bool useMinSpeed, float minSpeed)
     {
         if (m_shooting)
         {
@@ -110,6 +113,7 @@ public class UbhBullet : UbhMonoBehaviour
 
         m_speed = speed;
         m_angle = angle;
+        m_quartanionAngle = quartanionAngle;
         m_accelSpeed = accelSpeed;
         m_accelTurn = accelTurn;
         m_homing = homing;
@@ -328,5 +332,9 @@ public class UbhBullet : UbhMonoBehaviour
             // Update tentacles
             m_tentacleBullet.UpdateRotate();
         }
+
+        //Quartanion Bullet Posion
+        //3次元軸で弾幕の角度を決める
+
     }
 }

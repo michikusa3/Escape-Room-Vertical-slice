@@ -1552,10 +1552,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 293571599}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c107e74546355f4795c0d3c5d70ec2d, type: 3}
+  m_Script: {fileID: 11500000, guid: ca14c577abfe2cf43957f6e2d5cc7d3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bulletPrefab: {fileID: 8429074779065874725, guid: c521f736ef0a3914fbf32d5f9cc7de4b,
+  m_bulletPrefab: {fileID: 4308030517835420651, guid: ff17d48211ea8944297053a8a268dea9,
     type: 3}
   m_bulletNum: 10
   m_bulletSpeed: 2
@@ -1570,6 +1570,7 @@ MonoBehaviour:
   m_resumeTime: 0
   m_useAutoRelease: 0
   m_autoReleaseTime: 10
+  m_quartanionAngle: {x: 0, y: 0, z: 0, w: 1}
   m_shotFiredCallbackEvents:
     m_PersistentCalls:
       m_Calls: []
@@ -1580,8 +1581,9 @@ MonoBehaviour:
   m_paintCenterAngle: 180
   m_betweenAngle: 3
   m_nextLineDelay: 0.1
-  m_wayNum: 0
-  m_centerAngle: 180
+  m_startAngle: 180
+  m_shiftAngle: 5
+  m_betweenDelay: 0.2
 --- !u!4 &299116048 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: db2e655b68d9a0749a249c163b5f6e62,
@@ -2859,6 +2861,22 @@ PrefabInstance:
       propertyPath: m_paintDataText
       value: 
       objectReference: {fileID: 4900000, guid: 20b6f9e224c0fa044a01a24371fd9fd5, type: 3}
+    - target: {fileID: 11400000, guid: 8bc2b1ef6e9ee4746973c725c3da77bf, type: 3}
+      propertyPath: m_quartanionAngle.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 8bc2b1ef6e9ee4746973c725c3da77bf, type: 3}
+      propertyPath: m_quartanionAngle.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 8bc2b1ef6e9ee4746973c725c3da77bf, type: 3}
+      propertyPath: m_quartanionAngle.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 8bc2b1ef6e9ee4746973c725c3da77bf, type: 3}
+      propertyPath: m_nextLineDelay
+      value: 0.001
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bc2b1ef6e9ee4746973c725c3da77bf, type: 3}
 --- !u!4 &572978395 stripped
@@ -2974,7 +2992,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 420662, guid: fe8034f644f473844b6cf8ce7135fb04, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11443186, guid: fe8034f644f473844b6cf8ce7135fb04, type: 3}
       propertyPath: m_bulletPrefab
@@ -10650,7 +10668,7 @@ PrefabInstance:
     - target: {fileID: 4460523669581490413, guid: b94327845d8112349873feb3d2d20842,
         type: 3}
       propertyPath: m_Name
-      value: WayPaintShot
+      value: PaintSpiralShot
       objectReference: {fileID: 0}
     - target: {fileID: 4596578564844790999, guid: b94327845d8112349873feb3d2d20842,
         type: 3}
@@ -10716,6 +10734,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_axisMove
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5901460281502453514, guid: b94327845d8112349873feb3d2d20842,
+        type: 3}
+      propertyPath: m_shotList.Array.data[0].m_afterDelay
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7443240084156467110, guid: b94327845d8112349873feb3d2d20842,
+        type: 3}
+      propertyPath: m_Name
+      value: PaintSpiralShot
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7443240084166685254, guid: b94327845d8112349873feb3d2d20842, type: 3}

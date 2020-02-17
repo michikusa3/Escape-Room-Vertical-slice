@@ -50,6 +50,10 @@ public abstract class UbhBaseShot : UbhMonoBehaviour
     // "Set a time to automatically release after the shot at using UseAutoRelease. (sec)"
     [FormerlySerializedAs("_AutoReleaseTime"), UbhConditionalHide("m_useAutoRelease")]
     public float m_autoReleaseTime = 10f;
+    
+    [FormerlySerializedAs("_QuartarninAngle")]
+    public Quaternion m_quartanionAngle = Quaternion.identity;
+
 
     [Space(10)]
 
@@ -148,15 +152,15 @@ public abstract class UbhBaseShot : UbhMonoBehaviour
     /// Shot UbhBullet object.
     /// </summary>
     protected void ShotBullet(UbhBullet bullet, float speed, float angle,
-                               bool homing = false, Transform homingTarget = null, float homingAngleSpeed = 0f,
-                               bool sinWave = false, float sinWaveSpeed = 0f, float sinWaveRangeSize = 0f, bool sinWaveInverse = false)
+                                bool homing = false, Transform homingTarget = null, float homingAngleSpeed = 0f,
+                                bool sinWave = false, float sinWaveSpeed = 0f, float sinWaveRangeSize = 0f, bool sinWaveInverse = false)
     {
         if (bullet == null)
         {
             return;
         }
         bullet.Shot(this,
-                    speed, angle, m_accelerationSpeed, m_accelerationTurn,
+                    speed, angle,m_quartanionAngle, m_accelerationSpeed, m_accelerationTurn,
                     homing, homingTarget, homingAngleSpeed,
                     sinWave, sinWaveSpeed, sinWaveRangeSize, sinWaveInverse,
                     m_usePauseAndResume, m_pauseTime, m_resumeTime,

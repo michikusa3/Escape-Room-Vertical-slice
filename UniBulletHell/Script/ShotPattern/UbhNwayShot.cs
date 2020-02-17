@@ -68,10 +68,18 @@ public class UbhNwayShot : UbhBaseShot
             }
             //奇数か偶数かを調べて、
             float baseAngle = m_wayNum % 2 == 0 ? m_centerAngle - (m_betweenAngle / 2f) : m_centerAngle;
+
             //奇数か偶数か精げてWayの角度を決める
             float angle = UbhUtil.GetShiftedAngle(i, baseAngle, m_betweenAngle);
+            //float angle_1 = angle - 5;
+            //float angle_2 = angle + 5;
 
+            //NxNWayをVector3で表現した
             ShotBullet(bullet, m_bulletSpeed, angle);
+            //ShotBullet(bullet, m_bulletSpeed, angle_1);
+            //ShotBullet(bullet, m_bulletSpeed, angle_2);
+
+
 
             m_nowIndex++;
             if (m_nowIndex >= m_bulletNum)
